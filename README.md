@@ -25,6 +25,14 @@ Timeout: The maximum amount of time to wait for sensor outputs to go low.
 Loop Function
 The loop function reads the sensor data and calculates the error. It then uses the PID constants to adjust the speed of the motors based on the error. The robot moves forward with the appropriate speeds.
 
+```c++
+int position = qtrrc.readLine(sensors,QTR_EMITTERS_ON,1); // get calibrated readings along with the line position, refer to the QTR Sensors Arduino Library for more details on line position.
+int error = position / 3000;
+
+//KID Implementaion
+int motorSpeed = Kp * erro + Kd * (error - lastError);
+lastError = error;
+```
 ## Circuit Diagram
 The circuit diagram for this project is not included in this code. Please refer to the hardware documentation for the circuit diagram.
 
